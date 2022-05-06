@@ -3,7 +3,29 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
+const init = () => {
+  const inputForm = document.querySelector('article');
+  inputForm.addEventListener('click', (event) => {
+    event.preventDefault();
+    const input = document.querySelector('input#searchByID');
+    fetch(mimicServerCall)
+    .then(response => response.json())
+    .catch (error => {
+      alert("Wrong name! Please try again!");
+      console.log(error.message);
+      document.body.append(error.message)
+    });
+    
+    // .then(data => {
+    //   const title = document.querySelector('section#movieDetails h4');
+    //   const summary = document.querySelector('section#movieDetails p');
+    //   title.innerText = data.title;
+    //   summary.innerText = data.summary;
+    // });
+  });
+}
 
+document.addEventListener('DOMContentLoaded', init);
 
 
 
